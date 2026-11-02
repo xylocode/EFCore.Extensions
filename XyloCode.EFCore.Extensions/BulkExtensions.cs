@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace XyloCode.EFCore.Extensions
 {
@@ -37,15 +38,24 @@ namespace XyloCode.EFCore.Extensions
         }
 
 
-        public static Task<int> NocheckConstraintAllAsync<TDbContext, TEntity>(
+        public static Task<int> NoCheckConstraintAllAsync<TDbContext, TEntity>(
             this TDbContext dbContext
             , CancellationToken cancellationToken = default)
             where TDbContext : DbContext
             where TEntity : class, new()
         {
-            var entityType = dbContext.Model.FindEntityType(typeof(TEntity))!;
-            string targetSchemaName = entityType.GetSchema()!;
-            string targetTableName = entityType.GetTableName()!;
+            return NoCheckConstraintAllAsync(dbContext, typeof(TEntity), cancellationToken);
+        }
+
+        public static Task<int> NoCheckConstraintAllAsync<TDbContext>(
+            this TDbContext dbContext
+            , Type entityType
+            , CancellationToken cancellationToken = default)
+            where TDbContext : DbContext
+        {
+            IEntityType iet = dbContext.Model.FindEntityType(entityType)!;
+            string targetSchemaName = iet.GetSchema()!;
+            string targetTableName = iet.GetTableName()!;
             string sqlCmdText = $"ALTER TABLE [{targetSchemaName}].[{targetTableName}] NOCHECK CONSTRAINT ALL";
             return dbContext.Database.ExecuteSqlRawAsync(sqlCmdText, cancellationToken);
         }
@@ -56,9 +66,18 @@ namespace XyloCode.EFCore.Extensions
             where TDbContext : DbContext
             where TEntity : class, new()
         {
-            var entityType = dbContext.Model.FindEntityType(typeof(TEntity))!;
-            string targetSchemaName = entityType.GetSchema()!;
-            string targetTableName = entityType.GetTableName()!;
+            return CheckConstraintAllAsync(dbContext, typeof(TEntity), cancellationToken);
+        }
+
+        public static Task<int> CheckConstraintAllAsync<TDbContext>(
+            this TDbContext dbContext
+            , Type entityType
+            , CancellationToken cancellationToken = default)
+            where TDbContext : DbContext
+        {
+            IEntityType iet = dbContext.Model.FindEntityType(entityType)!;
+            string targetSchemaName = iet.GetSchema()!;
+            string targetTableName = iet.GetTableName()!;
             string sqlCmdText = $"ALTER TABLE [{targetSchemaName}].[{targetTableName}] WITH CHECK CHECK CONSTRAINT ALL";
             return dbContext.Database.ExecuteSqlRawAsync(sqlCmdText, cancellationToken);
         }

@@ -60,14 +60,14 @@ namespace XyloCode.EFCore.Examples
         
         public async Task RunAsync(CancellationToken cancellationToken = default)
         {
-            await _dbContext.NocheckConstraintAllAsync<SimpleEFCoreDbContext, Country>(cancellationToken);
+            await _dbContext.NoCheckConstraintAllAsync(typeof(Country), cancellationToken);
 
             var t = new Task[1];
             int i = 0;
             t[i++] = CountryWorkerAsync(cancellationToken);
             await Task.WhenAll(t);
 
-            await _dbContext.CheckConstraintAllAsync<SimpleEFCoreDbContext, Country>(cancellationToken);
+            await _dbContext.CheckConstraintAllAsync(typeof(Country), cancellationToken);
         }
     }
 }
