@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <AssemblyName>XyloCode.EFCore.Extensions</AssemblyName>
+	  <RootNamespace>XyloCode.EFCore.Extensions</RootNamespace>
+	  <PackageId>XyloCode.EFCore.Extensions</PackageId>
+	  <Title>XyloCode.EFCore.Extensions</Title>
+	  <Version>1.0.0</Version>
+	  <Authors>xylocode</Authors>
+	  <Copyright>Copyright (c) 2026 Sergey Korobeynikov</Copyright>
+	  <PackageTags>EF Core; Bulk; Extensions; Merge; MSSQL;</PackageTags>
+	  <PackageIcon>LOGO.png</PackageIcon>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Product>XyloCode.EFCore.Extensions</Product>
+	  <Description>
+		  An EF Core extension library for high-performance bulk data synchronization using SQL MERGE, supporting both IEnumerable&lt;T&gt; and IAsyncEnumerable&lt;T&gt; data sources.
+		  The library is optimized for working with DevExpress XAF system fields (GCRecord, OptimisticLockField), as well as custom versioning and change-tracking fields (RowState, RowStamp). It supports state-aware record processing, including handling of deleted objects, and provides utilities for temporarily disabling foreign key constraint checks during synchronization operations.
+	  </Description>
+	  <PackageProjectUrl>https://xylocode.com/</PackageProjectUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <RepositoryUrl>https://github.com/xylocode/EFCore.Extensions</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageReleaseNotes>Initial release of the EF Core bulk synchronization library.</PackageReleaseNotes>
+	  <IncludeSymbols>True</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  <GenerateDocumentationFile>False</GenerateDocumentationFile>
+	  
+  </PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="" />
+		<None Include="README.md" Pack="true" PackagePath="" />
+		<None Include="LOGO.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.14" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.22" />
+  </ItemGroup>
+
+</Project>
