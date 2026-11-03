@@ -5,6 +5,7 @@ namespace XyloCode.EFCore.Extensions
 {
     public static class BulkExtensions
     {
+
         public async static Task<int> MergeAsync<TDbContext, TEntity>(
             this TDbContext dbContext
             , IEnumerable<TEntity> entities
@@ -13,6 +14,14 @@ namespace XyloCode.EFCore.Extensions
             where TDbContext : DbContext
             where TEntity : class, new()
         {
+            switch (dbContext.Database.ProviderName)
+            {
+                case "Microsoft.EntityFrameworkCore.SqlServer":
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+
             var master = new EFCoreCopyMaster<TDbContext, TEntity>(dbContext, copyConfig);
             await master.CreateTempTableAsync(cancellationToken);
             await master.WriteToServerAsync(entities, cancellationToken);
@@ -29,7 +38,15 @@ namespace XyloCode.EFCore.Extensions
             where TDbContext: DbContext
             where TEntity: class, new()
         {
-            var master = new EFCoreCopyMaster<TDbContext, TEntity>(dbContext, copyConfig);
+            switch (dbContext.Database.ProviderName)
+            {
+                case "Microsoft.EntityFrameworkCore.SqlServer":
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+
+             var master = new EFCoreCopyMaster<TDbContext, TEntity>(dbContext, copyConfig);
             await master.CreateTempTableAsync(cancellationToken);
             await master.WriteToServerAsync(entities, cancellationToken);
             var count = await master.MergeAsync(cancellationToken);
