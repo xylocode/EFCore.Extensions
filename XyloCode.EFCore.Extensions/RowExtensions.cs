@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace XyloCode.EFCore.Extensions
+﻿namespace XyloCode.EFCore.Extensions
 {
     public static class RowExtensions
     {
+        private static readonly DateTime _zero = new(2022, 2, 24);
         public static int GetRowStamp()
         {
-            return 0;
+            return ((int)((DateTime.UtcNow - _zero).TotalSeconds));
         }
     }
 }
