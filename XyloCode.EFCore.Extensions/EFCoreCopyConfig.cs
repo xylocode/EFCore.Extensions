@@ -16,7 +16,7 @@ namespace XyloCode.EFCore.Extensions
         public HashSet<string> IgnoredPropertyNames { get; set; } = ["OptimisticLockField"];
         public HashSet<string> AdditionalWhenMatchedUpdateConditions { get; set; } = [];
 
-        public DeletionMode DeletionMode { get; set; } = DeletionMode.DeferredDeletionIfPossibleElseFullDeletion;
+        public DeletionMode DeletionMode { get; set; } = DeletionMode.DeferredDeletionIfPossibleElseNone;
         public string RowStampPropertyName { get; set; } = "RowStamp";
         public string RowStatePropertyName { get; set; } = "RowState";
         public string DeferredDeletionPropertyName { get; set; } = "GCRecord";

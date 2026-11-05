@@ -303,6 +303,11 @@ namespace XyloCode.EFCore.Extensions
                         }
                         break;
 
+                    case DeletionMode.DeferredDeletionIfPossibleElseNone:
+                        if (_useRowState || _useDeferredDeletion)
+                            goto case DeletionMode.DeferredDeletion;
+                        break;
+
                     case DeletionMode.DeferredDeletionIfPossibleElseFullDeletion:
                         if (_useRowState || _useDeferredDeletion)
                             goto case DeletionMode.DeferredDeletion;

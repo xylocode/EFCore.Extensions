@@ -5,7 +5,8 @@
         None = 0,
         FullDeletion = 1,
         DeferredDeletion = 2,
-        DeferredDeletionIfPossibleElseFullDeletion = 3,
-        CustomDeletion = 4
+        DeferredDeletionIfPossibleElseNone = 3, 
+        DeferredDeletionIfPossibleElseFullDeletion = 4,
+        CustomDeletion = 5
     }
 }
