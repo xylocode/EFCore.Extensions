@@ -24,6 +24,6 @@ namespace XyloCode.EFCore.Extensions
         public bool UseRowStamp { get; set; } = true;
         public bool UseRowState { get; set; } = true;
         public HashSet<string> MergeOptions { get; set; } = ["MAXDOP 4"];
-        public string ZeroRowStampSql { get; set; } = "DATEDIFF(second, '2024-02-24', GETUTCDATE())";
+        public string ZeroRowStampSql { get; set; } = "DATEDIFF(second, '2022-02-24', GETUTCDATE())";
     }
 }
