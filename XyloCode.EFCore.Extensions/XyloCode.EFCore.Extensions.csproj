@@ -8,7 +8,7 @@
 	  <RootNamespace>XyloCode.EFCore.Extensions</RootNamespace>
 	  <PackageId>XyloCode.EFCore.Extensions</PackageId>
 	  <Title>XyloCode.EFCore.Extensions</Title>
-	  <Version>1.0.0</Version>
+	  <Version>1.0.1</Version>
 	  <Authors>xylocode</Authors>
 	  <Copyright>Copyright (c) 2026 Sergey Korobeynikov</Copyright>
 	  <PackageTags>EF Core; Bulk; Extensions; Merge; MSSQL;</PackageTags>
@@ -25,7 +25,7 @@
 	  <RepositoryType>git</RepositoryType>
 	  <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <PackageReleaseNotes>Initial release of the EF Core bulk synchronization library.</PackageReleaseNotes>
+	  <PackageReleaseNotes>Fixed numerous bugs and improved overall stability. Renamed configuration properties and methods for better consistency and clarity. Development is ongoing.</PackageReleaseNotes>
 	  <IncludeSymbols>True</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	  <GenerateDocumentationFile>False</GenerateDocumentationFile>
