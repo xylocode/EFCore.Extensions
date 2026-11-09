@@ -287,7 +287,7 @@ namespace XyloCode.EFCore.Extensions
                         if (_useRowStamp)
                         {
                             if (i++ > 0) q.Append(", ");
-                            q.AppendLine($"[{_rowStampColumnName}] = DATEDIFF(second, '2024-02-24', GETUTCDATE())");
+                            q.AppendLine($"[{_rowStampColumnName}] = {_config.ZeroRowStampSql}");
                         }
 
                         if (_useRowState)
@@ -350,7 +350,7 @@ namespace XyloCode.EFCore.Extensions
                 }
 
                 if (_useRowStamp)
-                    q.AppendLine($", S.[{_rowStampColumnName}]");
+                    q.AppendLine($", COALESCE(S.[{_rowStampColumnName}], {_config.ZeroRowStampSql})");
 
                 if(_useRowState)
                     q.AppendLine($", {(int)RowState.INSERTED}");
@@ -410,7 +410,7 @@ namespace XyloCode.EFCore.Extensions
                 if (i == 0) return string.Empty;
 
                 if (_useRowStamp)
-                    q.AppendLine($", T.[{_rowStampColumnName}] = S.[{_rowStampColumnName}]");
+                    q.AppendLine($", T.[{_rowStampColumnName}] = COALESCE(S.[{_rowStampColumnName}], {_config.ZeroRowStampSql})");
 
                 if (_useRowState)
                     q.AppendLine($", T.[{_rowStateColumnName}] = {(int)RowState.UPDATED}");
