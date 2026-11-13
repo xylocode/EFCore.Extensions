@@ -5,9 +5,9 @@ namespace XyloCode.EFCore.Extensions
     public class EFCoreCopyConfig
     {
         public SqlBulkCopyOptions SqlBulkCopyOptions { get; set; } = SqlBulkCopyOptions.Default;
-        public int CommandTimeout { get; set; } = 600;
-        public int BatchSize { get; set; } = 2_000;
-        public int BulkCopyTimeout { get; set; } = 600;
+        public int CommandTimeout { get; set; } = 3600;
+        public int BatchSize { get; set; } = 2000;
+        public int BulkCopyTimeout { get; set; } = 3600;
         public bool EnableStreaming { get; set; } = true;
         public int NotifyAfter { get; set; } = 0;
         public SqlRowsCopiedEventHandler? SqlRowsCopied { get; set; }
