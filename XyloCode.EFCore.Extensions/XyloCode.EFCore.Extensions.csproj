@@ -8,7 +8,7 @@
 	  <RootNamespace>XyloCode.EFCore.Extensions</RootNamespace>
 	  <PackageId>XyloCode.EFCore.Extensions</PackageId>
 	  <Title>XyloCode.EFCore.Extensions</Title>
-	  <Version>1.0.1</Version>
+	  <Version>1.0.2</Version>
 	  <Authors>xylocode</Authors>
 	  <Copyright>Copyright (c) 2026 Sergey Korobeynikov</Copyright>
 	  <PackageTags>EF Core; Bulk; Extensions; Merge; MSSQL;</PackageTags>
